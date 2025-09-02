@@ -1,0 +1,25 @@
+/* static/css/style.css */
+
+/* Definindo nossa paleta de cores customizada */
+:root {
+    --cor-principal: #198754; /* Verde do Bootstrap que já estamos usando */
+    --cor-selecionado: #0d6efd; /* Azul do Bootstrap */
+    --cor-ocupado: #dc3545; /* Vermelho do Bootstrap */
+    --cor-fundo: #f8f9fa;
+    --cor-texto: #212529;
+}
+
+body {
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+}
+
+/* Transição suave para os botões da grade de horários */
+#grade-horarios .btn {
+    transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
+}
+
+/* Efeito de "levantar" o botão ao passar o mouse */
+#grade-horarios .btn:not(:disabled):hover {
+    transform: scale(1.05);
+}
