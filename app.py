@@ -22,6 +22,13 @@ db = SQLAlchemy(app)
 
 # --- NOSSOS MODELOS (TABELAS) ---
 
+# Comando customizado para criar as tabelas do banco de dados
+@app.cli.command("create-db")
+def create_db():
+    """Cria as tabelas do banco de dados."""
+    db.create_all()
+    print("Tabelas do banco de dados criadas com sucesso!")
+
 class Quadra(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(100), nullable=False)
