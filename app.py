@@ -8,7 +8,13 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 app = Flask(__name__)
 # Configuração do banco de dados SQLite
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'arena.db')
+# A URL do banco de dados de produção será pega da variável de ambiente DATABASE_URL
+database_url = os.environ.get('DATABASE_URL')
+if database_url:
+    # Altera o dialeto para PostgreSQL
+    database_url = database_url.replace("postgres://", "postgresql://", 1)
+
+app.config['SQLALCHEMY_DATABASE_URI'] = database_url or 'sqlite:///' + os.path.join(basedir, 'arena.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False # Opcional: desativa warnings
 
 # Inicializa o banco de dados
