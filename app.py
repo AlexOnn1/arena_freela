@@ -29,6 +29,15 @@ def create_db():
     db.create_all()
     print("Tabelas do banco de dados criadas com sucesso!")
 
+# ROTA SECRETA E TEMPORÁRIA PARA CRIAR O BANCO DE DADOS EM PRODUÇÃO
+@app.route('/setup-database-9a7b3c')
+def setup_database():
+    try:
+        db.create_all()
+        return "<h1>Banco de dados e tabelas criados com sucesso!</h1>"
+    except Exception as e:
+        return f"<h1>Ocorreu um erro ao criar o banco:</h1><p>{e}</p>"
+
 class Quadra(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(100), nullable=False)
