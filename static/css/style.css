@@ -1,25 +1,59 @@
 /* static/css/style.css */
 
-/* Definindo nossa paleta de cores customizada */
+/* Importa a fonte Poppins do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+
+/* Tema Claro (Padrão) */
 :root {
-    --cor-principal: #198754; /* Verde do Bootstrap que já estamos usando */
-    --cor-selecionado: #0d6efd; /* Azul do Bootstrap */
-    --cor-ocupado: #dc3545; /* Vermelho do Bootstrap */
-    --cor-fundo: #f8f9fa;
-    --cor-texto: #212529;
+    --bs-body-bg: #f8f9fa;
+    --bs-body-color: #212529;
+    --bs-secondary-bg: #ffffff;
+    --bs-border-color: #dee2e6;
+}
+
+/* Tema Escuro */
+[data-bs-theme="dark"] {
+    --bs-body-bg: #212529;
+    --bs-body-color: #dee2e6;
+    --bs-secondary-bg: #343a40;
+    --bs-border-color: #495057;
 }
 
 body {
-    background-color: var(--cor-fundo);
-    color: var(--cor-texto);
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bs-body-bg);
+    color: var(--bs-body-color);
 }
 
-/* Transição suave para os botões da grade de horários */
+.main-container {
+    max-width: 960px;
+    margin: auto;
+}
+
+.schedule-card {
+    background-color: var(--bs-secondary-bg);
+    border-color: var(--bs-border-color) !important;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
 #grade-horarios .btn {
-    transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    width: 90px;
+    font-weight: 500;
 }
 
-/* Efeito de "levantar" o botão ao passar o mouse */
 #grade-horarios .btn:not(:disabled):hover {
-    transform: scale(1.05);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
+
+/* NOVO: Estilo do Rodapé */
+.footer {
+    border-top: 1px solid var(--bs-border-color);
+    background-color: var(--bs-secondary-bg);
+    padding: 1.5rem 0;
+    color: var(--bs-body-color);
+    opacity: 0.7;
+}
+
